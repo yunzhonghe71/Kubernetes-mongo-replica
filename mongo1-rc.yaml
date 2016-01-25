@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mongo1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo1 
+    spec:
+      containers:
+        - resources:
+            limits: 
+              cpu: 0.3
+          image: mongo:v7
+          name: node1
+          ports:
+            - containerPort: 27017
+          env:
+            - name: AUTH
+              value: "yes"
+            - name: COPY1
+              value: "yes"
+            - name:  MONGODB_PASS
+              value: "pass"
+
+
